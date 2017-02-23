@@ -96,6 +96,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface JSQMessagesCollectionViewCell : UICollectionViewCell
 
+- (void)setAvatarViewSize:(CGSize)avatarViewSize;
+
 /**
  *  The object that acts as the delegate for the cell.
  */
