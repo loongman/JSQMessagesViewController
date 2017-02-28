@@ -42,6 +42,8 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
 @property (weak, nonatomic, readonly, nullable) JSQMessagesComposerTextView *textView;
 
 @property (assign, nonatomic) CGFloat textViewTopPadding;
+@property (assign, nonatomic) CGFloat textViewBottomPadding;
+@property (assign, nonatomic) CGFloat textViewLeadingPadding;
 
 /**
  *  A custom button item displayed on the left of the toolbar content view.
