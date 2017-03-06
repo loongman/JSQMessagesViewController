@@ -639,6 +639,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     if ([messageItem isMediaMessage]) {
 
         if ([[messageItem media] respondsToSelector:@selector(mediaDataType)]) {
+            self.selectedIndexPathForMenu = indexPath;
             return YES;
         }
         return NO;
@@ -731,6 +732,11 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
  didTapCellAtIndexPath:(NSIndexPath *)indexPath
          touchLocation:(CGPoint)touchLocation { }
+
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didReceiveMenuWillShowNotification:(NSNotification *)notification forIndexPath:(NSIndexPath *)indexPath
+{
+    return;
+}
 
 #pragma mark - Input toolbar delegate
 
@@ -828,6 +834,8 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
     UIMenuController *menu = [notification object];
     [menu setMenuVisible:NO animated:NO];
+
+    [self collectionView:self.collectionView didReceiveMenuWillShowNotification:notification forIndexPath:self.selectedIndexPathForMenu];
 
     JSQMessagesCollectionViewCell *selectedCell = (JSQMessagesCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:self.selectedIndexPathForMenu];
     CGRect selectedCellMessageBubbleFrame = [selectedCell convertRect:selectedCell.messageBubbleContainerView.frame toView:self.view];
