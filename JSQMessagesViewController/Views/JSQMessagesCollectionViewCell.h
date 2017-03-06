@@ -153,6 +153,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (weak, nonatomic, readonly, nullable) UIImageView *avatarImageView;
 
+- (void)setAvatarViewSize:(CGSize)avatarViewSize;
+
 /**
  *  Returns the avatar container view of the cell. This view is the superview of the cell's avatarImageView.
  *
